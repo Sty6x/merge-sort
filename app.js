@@ -36,7 +36,7 @@ function divide(a, b, arr) {
     let l = 0;
     let r = c.length
     let m = Math.round((l + r) / 2);
-    return divide(a, m, c)
+    return divide(m, r, c)
   } else {
     console.log(c)
     return c
@@ -50,7 +50,7 @@ let l = 0;
 let r = arr.length
 let m = Math.round((l + r) / 2);
 
-let newArr = divide(l, m, arr)
+let newArr = divide(m, r, arr)
 // console.log(newArr)
 
 // // let newR = newArr.length
