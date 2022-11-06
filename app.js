@@ -1,52 +1,43 @@
 #!usr/bin/node
 
-function sort(a, b) {
-  let c = [];
-  while (a.length !== 0 && b.length !== 0) {
-    if (a[0] <= b[0]) {
-      c.push(a[0]);
-      a.shift();
+function merge(a, b, arr) {
+  let i = 0, j = 0, k = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] < b[j]) {
+      arr[k] = a[i];
+      i += 1
     } else {
-      c.push(b[0]);
-      b.shift()
+      arr[k] = b[j];
+      j += 1
     }
+    k += 1
   }
-  console.log(c)
-  while (a.length !== 0) {
-    c.push(a[0])
-    a.shift();
+  while (i < a.length) {
+    arr[k] = a[i];
+    i += 1
+    k += 1
   }
-  while (b.length !== 0) {
-    c.push(b[0])
-    b.shift();
+  while (j < b.length) {
+    arr[k] = b[j];
+    j += 1
+    k += 1
   }
-  console.log(c)
-  return c
+  return arr
 }
-
-function divide(a, b, arr) {
-  let c = []
-  for (; a < b; a++) {
-    c.push(arr[a])
-  }
-  for (let i = 0; i < c.length; i++) {
-    arr.shift()
-  }
-  if (c.length > 1) {
-    let l = 0;
-    let r = c.length
-    let m = Math.round((l + r) / 2);
-    return divide(l, m, c)
-  } else {
-    return c
+const list = [4, 2, 10, 5]
+let x = 0
+function mergeSort(arr) {
+  if (arr.length > 1) {
+    let e = arr.length
+    let M = Math.floor((0 + e) / 2)
+    let L = arr.slice(0, M)
+    let R = arr.slice(M, e)
+    console.log(mergeSort(L))
+    console.log(mergeSort(R))
+    return merge(L, R, arr)
   }
 }
+console.log(
 
-let arr = [41, 10, 5, 6]
-
-let l = 0;
-let r = arr.length
-let m = Math.round((l + r) / 2);
-
-let newArr = divide(l, m, arr)
-console.log(newArr)
+  mergeSort(list)
+)
