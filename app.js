@@ -32,8 +32,8 @@ function mergeSort(arr) {
     let M = Math.floor((0 + e) / 2)
     let L = arr.slice(0, M)
     let R = arr.slice(M, e)
-    console.log(mergeSort(L))
-    console.log(mergeSort(R))
+    mergeSort(L)
+    mergeSort(R)
     return merge(L, R, arr)
   }
 }
